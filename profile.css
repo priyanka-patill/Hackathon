@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6fc;
+  color: #333;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Banner Section */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: url('https://i.ibb.co/BBVFYQ4/art-banner.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+.banner .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+.profile-info {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+.profile-info h1 {
+  font-size: 2rem;
+  margin: 5px 0;
+}
+.tagline {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #ffd54f;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+.stats div {
+  text-align: center;
+}
+.stats strong {
+  font-size: 1.2rem;
+  display: block;
+}
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.follow {
+  background: #ffd54f;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.commission-btn {
+  background: #ff4081;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Sections */
+section {
+  width: 90%;
+  max-width: 1100px;
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #1a237e;
+}
+
+/* About Section */
+.about p {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Portfolio */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Feedback Section */
+.comments {
+  margin-bottom: 15px;
+}
+.comment {
+  background: #eef0fc;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+.comment-btn {
+  background: #1a237e;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.comment-btn:hover {
+  background: #151b64;
+}
