@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - Talent Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1a237e;
+      --secondary-color: #ffeb3b;
+      --accent-color: #fbc02d;
+      --background-color: #f0f2f5;
+      --card-bg-color: #ffffff;
+      --text-color-primary: #333;
+      --text-color-secondary: #666;
+      --border-color: #ddd;
+      --shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--background-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--text-color-primary);
+    }
+
+    /* Header & Navigation Bar */
+    .header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: var(--primary-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      display: flex;
+      justify-content: center; /* Keeps centered structure */
+      align-items: center;
+      padding: 10px 40px;
+    }
+
+    .header .logo {
+      color: var(--secondary-color);
+      font-size: 28px;
+      margin: 0;
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateX(-80px); /* Shifted slightly left */
+    }
+    
+    .signup-container {
+      background: var(--card-bg-color);
+      padding: 40px;
+      border-radius: var(--border-radius);
+      width: 100%;
+      max-width: 420px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border: 1px solid var(--border-color);
+      box-sizing: border-box;
+      margin-top: 80px; /* Add margin to account for fixed header */
+    }
+    
+    .signup-container h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .signup-container p {
+      color: var(--text-color-secondary);
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    .input-box {
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .input-box label {
+      font-size: 14px;
+      color: var(--text-color-primary);
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 15px;
+      box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+      outline: none;
+    }
+
+    .suggestions {
+      margin-top: 10px;
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .suggestions span {
+      display: inline-block;
+      padding: 8px 14px;
+      background: var(--background-color);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .suggestions span:hover {
+      background: var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary-color);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #151e6b;
+      transform: translateY(-2px);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+
+    .alt {
+      margin: 25px 0;
+      font-size: 14px;
+      color: var(--text-color-secondary);
+      position: relative;
+    }
+    
+    .alt::before, .alt::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: var(--border-color);
+    }
+    
+    .alt::before { left: 0; }
+    .alt::after { right: 0; }
+
+    .create-btn {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid var(--accent-color);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--accent-color);
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+      margin-top: 0;
+    }
+
+    .create-btn:hover {
+      background: var(--accent-color);
+      color: #fff;
+    }
+    
+    .footer-text {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-color-secondary);
+    }
+
+    .footer-text a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+      color: #0d1766;
+    }
+
+    /* Modal (Pop-up) styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: var(--card-bg-color);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      width: 90%;
+      max-width: 500px;
+      box-shadow: var(--shadow);
+      position: relative;
+      animation: slide-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    @keyframes slide-in {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .modal-content .terms-text {
+      font-size: 14px;
+      max-height: 200px;
+      overflow-y: auto;
+      background: var(--background-color);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      line-height: 1.6;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+    
+    .modal-content .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .modal-content .checkbox-container input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: var(--text-color-secondary);
+      font-size: 30px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus {
+      color: var(--primary-color);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .header {
+        padding: 10px 20px;
+      }
+      .signup-container {
+        margin-top: 120px;
+        padding: 30px;
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .signup-container {
+        margin: 20px;
+      }
+      .header .logo {
+        font-size: 24px;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="logo"> 🔍 TALENT SEARCH</a>
+  </header>
+
+  <div class="signup-container">
+    <h2>Create Account</h2>
+    <p>Please fill in the details to register</p>
+
+    <form>
+      <div class="input-box">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" required>
+      </div>
+      <div class="input-box">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-box">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Choose a username" required>
+        <div class="suggestions" id="usernameSuggestions"></div>
+      </div>
+      <div class="input-box">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <div class="input-box">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Re-enter your password" required>
+      </div>
+
+      <button type="submit">Sign Up</button>
+
+      <div class="alt">or</div>
+
+      <button type="button" class="create-btn">Already have an account? Sign In</button>
+    </form>
+
+    <p class="footer-text">
+      By signing up, you agree to our <a href="#" id="terms-link">Terms & Conditions</a>.
+    </p>
+  </div>
+  
+  <div id="terms-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h3>Terms & Conditions</h3>
+      <div class="terms-text">
+        <p>Welcome to Talent Search. By accessing and using our service, you agree to comply with and be bound by the following terms and conditions. If you do not agree to these terms, you should not use this service.</p>
+        <p><strong>1. Account Creation:</strong> You must provide accurate and complete information to create an account. You are responsible for maintaining the confidentiality of your account password and for all activities that occur under your account.</p>
+        <p><strong>2. User Conduct:</strong> You agree not to use this service for any unlawful purpose or in any way that might harm the service or its users. This includes, but is not limited to, the submission of illegal or harmful content, harassment, or distribution of viruses.</p>
+        <p><strong>3. Intellectual Property:</strong> All content, trademarks, and intellectual property on this site are the property of Talent Search. You may not use, copy, or distribute any content without our express written permission.</p>
+        <p><strong>4. Termination:</strong> We reserve the right to suspend or terminate your account at any time, with or without cause, and without notice.</p>
+        <p><strong>5. Limitation of Liability:</strong> Talent Search shall not be liable for any damages arising from your use of the service. The service is provided "as is" without any warranties.</p>
+        <p><strong>6. Changes to Terms:</strong> We may revise these terms at any time. Your continued use of the service after any changes constitutes your acceptance of the new terms.</p>
+        <p>By proceeding, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions.</p>
+      </div>
+      <label class="checkbox-container">
+        <input type="checkbox" id="agree-checkbox">
+        I have read and agree to the Terms & Conditions
+      </label>
+      <button id="modal-submit-btn" disabled>Agree & Continue</button>
+    </div>
+  </div>
+
+  <script>
+    const usernameInput = document.getElementById("username");
+    const suggestionsBox = document.getElementById("usernameSuggestions");
+    const termsLink = document.getElementById("terms-link");
+    const modal = document.getElementById("terms-modal");
+    const closeModal = document.querySelector(".modal-close");
+    const agreeCheckbox = document.getElementById("agree-checkbox");
+    const modalSubmitBtn = document.getElementById("modal-submit-btn");
+
+    // Username suggestions logic
+    const artistTags = [
+      "art", "dj", "rap", "vox", "fx", "vibe", "mix", 
+      "jam", "sketch", "beat", "flow", "vid", "cam", "ink", "tone"
+    ];
+    const endings = ["X", "99", "_pro", "_hub", "_live", "_art", "_1"];
+
+    usernameInput.addEventListener("input", () => {
+      const value = usernameInput.value.trim();
+      suggestionsBox.innerHTML = "";
+
+      if (value.length > 2) {
+        const randomSuggestions = new Set();
+        while (randomSuggestions.size < 4) {
+          const tag = artistTags[Math.floor(Math.random() * artistTags.length)];
+          const end = endings[Math.floor(Math.random() * endings.length)];
+          randomSuggestions.add(value + "_" + tag + end);
+        }
+
+        randomSuggestions.forEach(s => {
+          const span = document.createElement("span");
+          span.textContent = s;
+          span.onclick = () => {
+            usernameInput.value = s;
+            suggestionsBox.innerHTML = "";
+          };
+          suggestionsBox.appendChild(span);
+        });
+      }
+    });
+
+    // Terms & Conditions Modal logic
+    termsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target == modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    agreeCheckbox.addEventListener('change', () => {
+      modalSubmitBtn.disabled = !agreeCheckbox.checked;
+    });
+
+    modalSubmitBtn.addEventListener('click', () => {
+      if (agreeCheckbox.checked) {
+        modal.style.display = 'none';
+        alert("WELCOME!! The journey of a thousand miles begins with a single step!");
+      }
+    });
+  </script>
+
+</body>
+</html>
