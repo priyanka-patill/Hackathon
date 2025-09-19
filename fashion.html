@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> Fashion Designers</title>
+  <title>Famous Fashion Designers</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #1c1c2b; color: #fff; }
     .navbar { display: flex; background: rgba(28,28,43,0.9); padding: 12px 30px; }
@@ -16,8 +16,10 @@
     .fashion-card { background: rgba(30,30,48,0.9); border-radius: 12px; overflow: hidden; width: 100%; max-width: 300px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.3s ease; padding: 20px; }
     .fashion-card:hover { transform: translateY(-10px); }
     .fashion-card h3 { color: #ffcc00; margin: 10px 0 15px 0; }
-    .fashion-card p { color: #fff; font-size: 14px; }
+    .fashion-card p { color: #fff; font-size: 14px; margin-bottom: 15px; }
     .fashion-image img { display: block; margin: 0 auto 15px auto; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+    .book-btn { display: inline-block; padding: 10px 25px; background: #ffcc00; color: #1c1c2b; font-weight: bold; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; margin-top: 5px; }
+    .book-btn:hover { background: #e6b800; }
   </style>
 </head>
 <body>
@@ -26,31 +28,35 @@
     <ul class="nav-links"><li><a href="index.html">Back</a></li></ul>
   </div>
 
-  <h1> Fashion Designers</h1>
+  <h1>Famous Fashion Designers</h1>
   
   <div class="fashion-container">
     <div class="fashion-card">
-      <div class="fashion-image"><img src="images/coco_chanel.jpg" alt="Coco Chanel"></div>
+      <div class="fashion-image"><img src="images/coco.jpg" alt="Coco Chanel"></div>
       <h3>Coco Chanel</h3>
-      <p>Iconic French designer who revolutionized women's fashion with elegance and simplicity.</p>
+      <p>Legendary French fashion designer, founder of Chanel, known for timeless elegance and revolutionary designs.</p>
+      <a href="book.html?fashion=coco-chanel" class="book-btn">Book Now</a>
     </div>
 
     <div class="fashion-card">
-      <div class="fashion-image"><img src="images/karl_lagerfeld.jpg" alt="Karl Lagerfeld"></div>
-      <h3>Karl Lagerfeld</h3>
-      <p>Legendary designer known for his work with Chanel, Fendi, and his unique personal style.</p>
+      <div class="fashion-image"><img src="images/giorgio.jpg" alt="Giorgio Armani"></div>
+      <h3>Giorgio Armani</h3>
+      <p>Italian designer famed for luxury fashion, classic tailoring, and modern sophisticated style.</p>
+      <a href="book.html?fashion=giorgio-armani" class="book-btn">Book Now</a>
     </div>
 
     <div class="fashion-card">
-      <div class="fashion-image"><img src="images/ralph_lauren.jpg" alt="Ralph Lauren"></div>
+      <div class="fashion-image"><img src="images/versace.jpg" alt="Gianni Versace"></div>
+      <h3>Gianni Versace</h3>
+      <p>Italian fashion designer known for bold, glamorous, and cutting-edge designs in high fashion.</p>
+      <a href="book.html?fashion=gianni-versace" class="book-btn">Book Now</a>
+    </div>
+
+    <div class="fashion-card">
+      <div class="fashion-image"><img src="images/ralph.jpg" alt="Ralph Lauren"></div>
       <h3>Ralph Lauren</h3>
-      <p>American fashion designer renowned for Polo Ralph Lauren and classic American style clothing.</p>
-    </div>
-
-    <div class="fashion-card">
-      <div class="fashion-image"><img src="images/valentino.jpg" alt="Valentino Garavani"></div>
-      <h3>Valentino Garavani</h3>
-      <p>Italian designer famous for haute couture, glamorous red carpet gowns, and luxury fashion.</p>
+      <p>American designer famous for the Polo Ralph Lauren brand, combining classic style with modern elegance.</p>
+      <a href="book.html?fashion=ralph-lauren" class="book-btn">Book Now</a>
     </div>
   </div>
 
