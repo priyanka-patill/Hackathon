@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Talent Search Artists</title>
+  <style>
+    :root {
+      --primary-color: #1a237e;
+      --secondary-color: #ffeb3b;
+      --accent-color: #fbc02d;
+    }
+    /* Header */
+    .header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: var(--primary-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 40px;
+    }
+    .header .logo {
+      color: var(--secondary-color);
+      font-size: 28px;
+      margin: 0;
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateX(-80px);
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      background: #f4f6fb;
+      color: #333;
+      line-height: 1.6;
+      padding: 120px 20px 40px; /* top padding to avoid header */
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 12px;
+      font-size: 36px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    h1 span.highlight {
+      color: var(--accent-color);
+      animation: highlightPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes highlightPulse {
+      0%, 100% { color: var(--accent-color); }
+      50% { color: #fff176; }
+    }
+
+    h2#diffTitle {
+      color: #374785;
+      margin-top: 36px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      padding-right: 25px;
+    }
+    h2#diffTitle::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: var(--accent-color);
+      transition: transform 0.3s ease;
+    }
+    h2#diffTitle.active::after {
+      content: '-';
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    h2:not(#diffTitle) {
+      color: #374785;
+      margin-top: 36px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    p, ul {
+      max-width: 720px;
+      margin-bottom: 18px;
+      font-size: 18px;
+      color: #4a4a4a;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      will-change: opacity, transform;
+    }
+    p.visible, ul.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .intro {
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 40px auto;
+    }
+
+    ul {
+      max-width: 680px;
+      margin-left: 20px;
+      list-style-type: disc;
+      padding-left: 22px;
+      cursor: default;
+      display: none; /* hidden initially */
+    }
+    ul.visible {
+      display: block;
+    }
+
+    /* Thank You Section */
+    .thank-you-container {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a237e;
+      line-height: 1.4;
+    }
+
+    .thank-you-container .highlight-text {
+      background: linear-gradient(90deg, #fbc02d, #ffeb3b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulseGradient 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .team-photos {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .team-member {
+      max-width: 180px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      border-radius: 16px;
+      padding: 8px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(26, 35, 126, 0.15);
+      transition: box-shadow 0.25s ease;
+    }
+    .team-member:hover {
+      box-shadow: 0 6px 25px rgba(251, 192, 45, 0.6);
+    }
+    .team-member img {
+      width: 100%;
+      border-radius: 110px;
+      object-fit: cover;
+      height: 180px;
+      margin-bottom: 10px;
+    }
+    .team-member h3 {
+      margin: 6px 0 3px 0;
+      font-size: 19px;
+      color: #222;
+      font-weight: 700;
+    }
+    .team-member p {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 10px 0;
+    }
+    .fun-fact {
+      font-style: italic;
+      font-size: 14px;
+      color: #fff;
+      min-height: 38px;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .show-fact {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="logo"> 🎯 TALENT SEARCH</a>
+  </header>
+
+  <h1>
+    About <span class="highlight">Talent Search</span>
+  </h1>
+
+  <p class="intro visible" tabindex="0">
+    Talent Search is a vibrant platform dedicated to empowering artists to showcase their talents, connect with eager clients, and realize their creative potential. We simplify commission requests and foster meaningful collaboration.
+  </p>
+
+  <h2 id="missionTitle">Our Mission</h2>
+  <p id="missionText" tabindex="0" class="visible">
+    We are passionate about bridging the gap between artists and their audiences, providing an intuitive and artist-centric space that nurtures creativity and professional growth.
+  </p>
+
+  <h2 id="diffTitle" tabindex="0" aria-expanded="false" aria-controls="diffContent">What Makes Us Different</h2>
+  <ul id="diffContent" role="region" aria-hidden="true">
+    <li><strong>Direct Enquiry & Commission System:</strong> We connect clients directly with artists to streamline commission requests and build authentic professional relationships.</li>
+    <li><strong>Artist-Centric Approach:</strong> Prioritizing artists' creative freedom, intellectual property, and career goals.</li>
+    <li><strong>Thriving Community:</strong> A supportive space for collaboration, inspiration, and growth among artists worldwide.</li>
+    <li><strong>Transparency & Support:</strong> Clear policies, fair terms, and responsive assistance ensure trust for all users.</li>
+  </ul>
+
+  <h2>Meet Our Team</h2>
+  <div class="team-photos" aria-label="Our Team">
+    <div class="team-member" tabindex="0" aria-describedby="fact1" role="button" aria-pressed="false">
+      <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Juhi Bijani - Co-founder & Community Lead" />
+      <h3>Juhi Bijani</h3>
+      <p>Co-founder & Community Lead</p>
+      <div id="fact1" class="fun-fact" aria-live="polite"></div>
+    </div>
+    <div class="team-member" tabindex="0" aria-describedby="fact2" role="button" aria-pressed="false">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Aditi Bahalkar - Platform Developer" />
+      <h3>Aditi Bahalkar</h3>
+      <p>Platform Developer</p>
+      <div id="fact2" class="fun-fact" aria-live="polite"></div>
+    </div>
+    <div class="team-member" tabindex="0" aria-describedby="fact3" role="button" aria-pressed="false">
+      <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Arpita Ahuja - Artist Relations Manager" />
+      <h3>Arpita Ahuja</h3>
+      <p>Artist Relations Manager</p>
+      <div id="fact3" class="fun-fact" aria-live="polite"></div>
+    </div>
+    <div class="team-member" tabindex="0" aria-describedby="fact4" role="button" aria-pressed="false">
+      <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Priyanka Patil - Marketing & Outreach Specialist" />
+      <h3>Priyanka Patil</h3>
+      <p>Marketing & Outreach Specialist</p>
+      <div id="fact4" class="fun-fact" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="thank-you-container" role="region" aria-live="polite" tabindex="0" aria-label="Thank you message">
+     Thank you for joining us! <br>
+    We're thrilled to have you as part of the <span class="highlight-text">Talent Search</span> community.
+  </div>
+
+  <script>
+    // Animate fade-in on scroll
+    function onScrollFadeIn() {
+      const fadeEls = document.querySelectorAll('p, ul');
+      fadeEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScrollFadeIn);
+    onScrollFadeIn();
+
+    // Toggle "What Makes Us Different" content
+    const diffTitle = document.getElementById('diffTitle');
+    const diffContent = document.getElementById('diffContent');
+    diffTitle.setAttribute('aria-expanded', 'false');
+    diffContent.setAttribute('aria-hidden', 'true');
+
+    diffTitle.addEventListener('click', toggleDiffSection);
+    diffTitle.addEventListener('keydown', function(e) {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleDiffSection();
+      }
+    });
+
+    function toggleDiffSection() {
+      const isVisible = diffContent.style.display === 'block';
+      diffContent.style.display = isVisible ? 'none' : 'block';
+      diffTitle.classList.toggle('active', !isVisible);
+      diffTitle.setAttribute('aria-expanded', !isVisible);
+      diffContent.setAttribute('aria-hidden', isVisible);
+    }
+
+    // Team member fun facts
+    const funFacts = {
+      fact1: "Loves hosting monthly art challenges to inspire creativity.",
+      fact2: "Passionate about coding and mentoring young developers.",
+      fact3: "Connects closely with artists to understand their needs deeply.",
+      fact4: "Led major successful marketing campaigns in arts and culture."
+    };
+
+    document.querySelectorAll('.team-member').forEach(member => {
+      member.addEventListener('click', () => toggleFact(member));
+      member.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFact(member);
+        }
+      });
+    });
+
+    function toggleFact(member) {
+      const factEl = member.querySelector('.fun-fact');
+      const isShown = factEl.classList.contains('show-fact');
+
+      document.querySelectorAll('.fun-fact').forEach(f => {
+        f.classList.remove('show-fact');
+        f.textContent = '';
+      });
+
+      if(!isShown) {
+        const factId = factEl.id;
+        factEl.textContent = funFacts[factId] || '';
+        factEl.classList.add('show-fact');
+        factEl.focus();
+      }
+    }
+  </script>
+</body>
+</html>

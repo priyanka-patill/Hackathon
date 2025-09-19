@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Singers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #1c1c2b;
+      color: #fff;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      background: rgba(28,28,43,0.9);
+      padding: 12px 30px;
+      gap: 20px;
+    }
+    .navbar .nav-links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      padding: 8px 15px;
+      border: 2px solid #ffcc00;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .navbar .nav-links li a:hover {
+      background: #ffcc00;
+      color: #1c1c2b;
+    }
+    h1 { text-align: center; margin-top: 20px; color: #ffcc00; }
+    .singer-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 40px;
+      justify-items: center;
+    }
+    @media (max-width: 768px) {
+      .singer-container { grid-template-columns: 1fr; }
+    }
+    .singer-card {
+      background: rgba(30,30,48,0.9);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+      padding: 20px;
+    }
+    .singer-card:hover { transform: translateY(-10px); }
+    .singer-card h3 {
+      color: #ffcc00;
+      margin: 10px 0 15px 0;
+    }
+    .singer-card p {
+      color: #fff;
+      font-size: 14px;
+    }
+    .singer-image img {
+      display: block;
+      margin: 0 auto 15px auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Back</a></li>
+    </ul>
+  </div>
+
+  <h1>Singers</h1>
+  
+  <div class="singer-container">
+
+    <div class="singer-card">
+      <div class="singer-image">
+        <img src="imgs/images.jpg" alt="Michael Jackson">
+      </div>
+      <h3>Michael Jackson</h3>
+      <p>The King of Pop, known for iconic hits, dance moves, and record-breaking albums worldwide.</p>
+    </div>
+
+    <div class="singer-card">
+      <div class="singer-image">
+        <img src="imgs/adele-attends-the-brit-awards-2022-at-the-o2-arena-on-news-photo-1709739132.avif" alt="Adele">
+      </div>
+      <h3>Adele</h3>
+      <p>British singer famous for her powerful voice and emotional ballads like "Hello" and "Someone Like You".</p>
+    </div>
+
+    <div class="singer-card">
+      <div class="singer-image">
+        <img src="imgs/taylor-swift-2025-grammy-awards-billboard-1800.webp" alt="Taylor Swift">
+      </div>
+      <h3>Taylor Swift</h3>
+      <p>Pop and country star known for storytelling in music, with multiple Grammy-winning albums.</p>
+    </div>
+
+    <div class="singer-card">
+      <div class="singer-image">
+        <img src="imgs/ed.webp" alt="Ed Sheeran">
+      </div>
+      <h3>Ed Sheeran</h3>
+      <p>Renowned singer-songwriter famous for hit songs blending pop, folk, and acoustic styles.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

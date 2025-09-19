@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Magicians</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #1c1c2b;
+      color: #fff;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      background: rgba(28,28,43,0.9);
+      padding: 12px 30px;
+      gap: 20px;
+    }
+    .navbar .nav-links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      padding: 8px 15px;
+      border: 2px solid #ffcc00;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .navbar .nav-links li a:hover {
+      background: #ffcc00;
+      color: #1c1c2b;
+    }
+    h1 { text-align: center; margin-top: 20px; color: #ffcc00; }
+    .magician-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 40px;
+      justify-items: center;
+    }
+    @media (max-width: 768px) {
+      .magician-container { grid-template-columns: 1fr; }
+    }
+    .magician-card {
+      background: rgba(30,30,48,0.9);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+      padding: 20px;
+    }
+    .magician-card:hover { transform: translateY(-10px); }
+    .magician-card h3 {
+      color: #ffcc00;
+      margin: 10px 0 15px 0;
+    }
+    .magician-card p {
+      color: #fff;
+      font-size: 14px;
+    }
+    .magician-image img {
+      display: block;
+      margin: 0 auto 15px auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Back</a></li>
+    </ul>
+  </div>
+
+  <h1> Magicians</h1>
+  
+  <div class="magician-container">
+
+    <div class="magician-card">
+      <div class="magician-image">
+        <img src="images/Harry_Houdini.png" alt="Harry Houdini">
+      </div>
+      <h3>Harry Houdini</h3>
+      <p>Legendary escape artist and illusionist known for his death-defying stunts and handcuff escapes.</p>
+    </div>
+
+    <div class="magician-card">
+      <div class="magician-image">
+        <img src="images/dc.jpg" alt="David Copperfield">
+      </div>
+      <h3>David Copperfield</h3>
+      <p>Famous for large-scale illusions, including making the Statue of Liberty disappear and walking through the Great Wall of China.</p>
+    </div>
+
+    <div class="magician-card">
+      <div class="magician-image">
+        <img src="images/dyna.jpg" alt="Dynamo">
+      </div>
+      <h3>Dynamo</h3>
+      <p>Modern magician known for street magic and mind-blowing close-up illusions on TV and live performances.</p>
+    </div>
+
+    <div class="magician-card">
+      <div class="magician-image">
+        <img src="images/penn-teller.jpg" alt="Penn & Teller">
+      </div>
+      <h3>Penn & Teller</h3>
+      <p>Dynamic duo known for combining comedy with magic, often revealing the secrets behind their tricks while entertaining audiences.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
