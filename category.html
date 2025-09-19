@@ -9,45 +9,94 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #f9f6ff; 
-      color: #333;
+      background: #1a237e;
+      color: #FFD700;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Navbar copied from home */
+    /* Background Stars */
+    .background-pattern {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0.1;
+      background-image: 
+        radial-gradient(circle at 25% 25%, #FFD700 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, #FFD700 2px, transparent 2px);
+      background-size: 100px 100px;
+      animation: patternMove 20s linear infinite;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      color: #FFD700;
+      font-size: 1.2rem;
+      animation: twinkle 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .star:nth-child(1){top:15%;left:20%;animation-delay:0s;}
+    .star:nth-child(2){top:25%;right:15%;animation-delay:1s;}
+    .star:nth-child(3){bottom:20%;left:25%;animation-delay:2s;}
+    .star:nth-child(4){bottom:30%;right:30%;animation-delay:0.5s;}
+
+    @keyframes patternMove {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(100px,100px); }
+    }
+
+    @keyframes twinkle {
+      0%,100% { opacity:0.3; transform:scale(1); }
+      50% { opacity:1; transform:scale(1.2); }
+    }
+
+    @keyframes textShine {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      background: rgba(255,255,255,0.5);
-      border-radius: 0 0 15px 15px;
+      background: rgba(26,35,126,0.7);
+      border-bottom: 1px solid rgba(255,215,0,0.3);
       position: sticky;
       top:0;
       z-index: 100;
+      backdrop-filter: blur(6px);
     }
 
     .logo {
       font-size: 28px;
       font-weight: bold;
-      color: #5e3ecb;
+      background: linear-gradient(45deg, #FFD700, #FFA000, #FFD700);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 4s ease-in-out infinite;
     }
 
     .search-bar {
       display: flex;
       align-items: center;
-      background: #fff;
+      background: rgba(255,255,255,0.1);
       border-radius: 30px;
       padding: 5px 12px;
-      border: 2px solid #5e3ecb;
+      border: 1px solid #FFD700;
     }
 
     .search-bar input {
       border: none;
       background: none;
-      color: #333;
+      color: #FFD700;
       font-size: 16px;
-      width: 400px;
+      width: 300px;
+      outline: none;
     }
 
     .search-bar span { margin-right: 8px; font-size: 20px; }
@@ -58,7 +107,7 @@
     }
 
     .nav-links a {
-      color: #5e3ecb;
+      color: #FFD700;
       text-decoration: none;
       font-weight: bold;
       padding: 6px 18px;
@@ -67,7 +116,7 @@
     }
 
     .nav-links a:hover {
-      background: #5e3ecb;
+      background: rgba(255,215,0,0.2);
       color: #fff;
     }
 
@@ -80,7 +129,11 @@
     .category-section h1 {
       font-size: 40px;
       margin-bottom: 40px;
-      color: #5e3ecb;
+      background: linear-gradient(45deg, #FFD700, #FFA000, #FFD700);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 4s ease-in-out infinite;
     }
 
     .cards {
@@ -91,17 +144,20 @@
     }
 
     .card {
-      background: #fff;
+      background: rgba(255,255,255,0.05);
       width: 280px;
       padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      border: 1px solid rgba(255,215,0,0.3);
+      box-shadow: 0 0 15px rgba(255,215,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
+      color: #fff;
     }
 
     .card:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255,215,0,0.6);
     }
 
     .card img {
@@ -112,24 +168,50 @@
       margin-bottom: 15px;
       transition: transform 0.5s ease;
     }
-    
+
     .card:hover img {
-        transform: scale(1.1);
+      transform: scale(1.1);
     }
 
     .card h3 {
       margin-bottom: 10px;
       font-size: 20px;
-      color: #5e3ecb;
+      color: #FFD700;
     }
 
     .card p {
       font-size: 14px;
-      color: #555;
+      color: #e0d7ff;
     }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(26,35,126,0.8);
+      border-top: 1px solid rgba(255,215,0,0.3);
+    }
+
+    footer a {
+      margin: 0 15px;
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 28px;
+      transition: 0.3s;
+    }
+
+    footer a:hover { transform: scale(1.2); color:#fff; }
+
+    footer p { margin-top: 15px; font-size: 14px; color: #FFD700; }
   </style>
 </head>
 <body>
+
+  <div class="background-pattern"></div>
+  <div class="star">★</div>
+  <div class="star">★</div>
+  <div class="star">★</div>
+  <div class="star">★</div>
 
   <nav>
     <div class="logo">Talent Search</div>
@@ -146,9 +228,15 @@
 
   <section class="category-section">
     <h1>Explore Categories</h1>
-    <div class="cards" id="categoryContainer">
-      </div>
+    <div class="cards" id="categoryContainer"></div>
   </section>
+
+  <footer>
+    <a href="https://instagram.com" target="_blank">📸</a>
+    <a href="https://github.com" target="_blank">🐙</a>
+    <a href="mailto:info@talentsearch.com">✉️</a>
+    <p>© 2024 Talent Search. All rights reserved.</p>
+  </footer>
 
   <script>
     const categories = [
