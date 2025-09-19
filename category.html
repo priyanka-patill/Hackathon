@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Categories</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out; /* smooth fade effect */
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      background: rgba(28, 28, 43, 0.9); /* semi-transparent */
+      padding: 12px 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .search-bar {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 60%;
+      max-width: 300px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      padding: 8px 15px;
+      border: 2px solid #ffcc00;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      background: #ffcc00;
+      color: #1c1c2b;
+    }
+
+    /* Card container */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+      gap: 20px;
+      padding: 40px;
+      justify-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Card design */
+    .card {
+      background: rgba(30,30,48,0.9); /* semi-transparent */
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      text-align: center;
+      padding: 15px;
+      background: rgba(44,44,64,0.9);
+      margin: 0;
+      font-size: 18px;
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="logo.jpeg" alt="Logo">
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#">About Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Cards -->
+  <div class="container">
+    <div class="card">
+      <img src="magician.jpeg" alt="Magicians">
+      <h3>Magicians</h3>
+    </div>
+
+    <div class="card">
+      <img src="singing.jpeg" alt="Singers">
+      <h3>Singers</h3>
+    </div>
+
+    <div class="card">
+      <img src="dancer.jpeg" alt="Dancers">
+      <h3>Dancers</h3>
+    </div>
+
+    <div class="card">
+      <img src="animator.jpeg" alt="Animators">
+      <h3>Animators</h3>
+    </div>
+
+    <div class="card">
+      <img src="sports.jpeg" alt="Sports">
+      <h3>Sports</h3>
+    </div>
+
+    <div class="card">
+      <img src="fashion.jpeg" alt="Fashion Designers">
+      <h3>Fashion Designers</h3>
+    </div>
+  </div>
+
+  <!-- Script for 5-second background change -->
+  <script>
+    const images = ["bg1.jpeg", "bg2.jpeg", "bg3.jpeg"];
+    let index = 0;
+
+    function changeBackground() {
+      document.body.style.backgroundImage = `url(${images[index]})`;
+      index = (index + 1) % images.length;
+    }
+
+    setInterval(changeBackground, 5000); // change every 5 seconds
+    window.onload = changeBackground; // set initial background
+  </script>
+
+</body>
+</html>
