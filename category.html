@@ -97,6 +97,7 @@
       border-radius: 15px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
+      overflow: hidden;
     }
 
     .card:hover {
@@ -109,6 +110,11 @@
       object-fit: cover;
       border-radius: 12px;
       margin-bottom: 15px;
+      transition: transform 0.5s ease;
+    }
+    
+    .card:hover img {
+        transform: scale(1.1);
     }
 
     .card h3 {
@@ -125,7 +131,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav>
     <div class="logo">Talent Search</div>
     <div class="search-bar">
@@ -139,15 +144,12 @@
     </div>
   </nav>
 
-  <!-- Category Section -->
   <section class="category-section">
     <h1>Explore Categories</h1>
     <div class="cards" id="categoryContainer">
-      <!-- JS will insert cards here -->
-    </div>
+      </div>
   </section>
 
-  <!-- JavaScript to generate categories -->
   <script>
     const categories = [
       { title: "Magicians", img: "images/magician.jpeg", desc: "Masters of illusion and wonder." },
