@@ -5,64 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talent Search</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      height: 100vh;
-      overflow: hidden;
-      background: #1a237e;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       font-family: Arial, sans-serif;
+      background: #1a237e;
+      color: #FFD700;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Navbar from home.html */
+    /* Background Stars */
+    .background-pattern {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0.1;
+      background-image: 
+        radial-gradient(circle at 25% 25%, #FFD700 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, #FFD700 2px, transparent 2px);
+      background-size: 100px 100px;
+      animation: patternMove 20s linear infinite;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      color: #FFD700;
+      font-size: 1.2rem;
+      animation: twinkle 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .star:nth-child(1){top:15%;left:20%;animation-delay:0s;}
+    .star:nth-child(2){top:25%;right:15%;animation-delay:1s;}
+    .star:nth-child(3){bottom:20%;left:25%;animation-delay:2s;}
+    .star:nth-child(4){bottom:30%;right:30%;animation-delay:0.5s;}
+
+    @keyframes patternMove {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(100px,100px); }
+    }
+
+    @keyframes twinkle {
+      0%,100% { opacity:0.3; transform:scale(1); }
+      50% { opacity:1; transform:scale(1.2); }
+    }
+
+    /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 0 0 15px 15px;
+      background: rgba(26,35,126,0.7);
+      border-bottom: 1px solid rgba(255,215,0,0.3);
       position: sticky;
-      top: 0;
+      top:0;
       z-index: 100;
-      width: 100%;
+      backdrop-filter: blur(6px);
     }
 
     .logo {
       font-size: 28px;
       font-weight: bold;
-      color: #5e3ecb;
+      background: linear-gradient(45deg, #FFD700, #FFA000, #FFD700);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 4s ease-in-out infinite;
+    }
+
+    @keyframes textShine {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .search-bar {
       display: flex;
       align-items: center;
-      background: #fff;
+      background: rgba(255,255,255,0.1);
       border-radius: 30px;
       padding: 5px 12px;
-      border: 2px solid #5e3ecb;
+      border: 1px solid #FFD700;
     }
 
     .search-bar input {
       border: none;
       background: none;
-      color: #333;
+      color: #FFD700;
       font-size: 16px;
-      width: 400px;
+      width: 300px;
+      outline: none;
     }
 
-    .search-bar span {
-      margin-right: 8px;
-      font-size: 20px;
-    }
+    .search-bar span { margin-right: 8px; font-size: 20px; }
 
     .nav-links {
       display: flex;
@@ -70,7 +107,7 @@
     }
 
     .nav-links a {
-      color: #5e3ecb;
+      color: #FFD700;
       text-decoration: none;
       font-weight: bold;
       padding: 6px 18px;
@@ -79,261 +116,117 @@
     }
 
     .nav-links a:hover {
-      background: #5e3ecb;
+      background: rgba(255,215,0,0.2);
       color: #fff;
     }
 
-    /* CSS from index.html for logo and animations */
-    .logo-container {
+    /* Main Section */
+    main {
       display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 2rem;
-      animation: fadeIn 2s ease-in-out;
-      margin-top: 50px; /* Adjust spacing from navbar */
+      padding: 100px 50px 50px 50px;
     }
 
-    .icon {
-      position: relative;
-      width: 120px;
-      height: 120px;
+    .left-section {
+      flex: 1;
+      padding-right: 40px;
     }
 
-    .search-circle {
-      width: 80px;
-      height: 80px;
-      border: 6px solid #FFD700;
-      border-radius: 50%;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    .search-handle {
-      width: 6px;
-      height: 40px;
-      background: #FFD700;
-      position: absolute;
-      bottom: 0;
-      right: 15px;
-      transform: rotate(-45deg);
-      border-radius: 3px;
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    .text-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .main-text {
-      font-size: 4rem;
-      font-weight: 700;
-      color: #FFD700;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      line-height: 0.9;
+    .left-section h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
       background: linear-gradient(45deg, #FFD700, #FFA000, #FFD700);
       background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: textShine 4s ease-in-out infinite;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
-    .tagline {
-      font-size: 1.2rem;
-      color: #B39DDB;
-      font-weight: 300;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-left: 0.5rem;
-      opacity: 0.9;
+    .left-section p {
+      font-size: 20px;
+      font-style: italic;
+      font-weight: bold;
+      margin-bottom: 25px;
+      max-width: 500px;
+      line-height: 1.5;
+      color: #e0d7ff;
     }
 
-    .decorative-elements {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .star {
-      position: absolute;
-      color: #FFD700;
-      font-size: 1.5rem;
-      animation: twinkle 2s ease-in-out infinite;
-    }
-
-    .star:nth-child(1) {
-      top: 15%;
-      left: 20%;
-      animation-delay: 0s;
-    }
-
-    .star:nth-child(2) {
-      top: 25%;
-      right: 15%;
-      animation-delay: 1s;
-    }
-
-    .star:nth-child(3) {
-      bottom: 20%;
-      left: 25%;
-      animation-delay: 2s;
-    }
-
-    .star:nth-child(4) {
-      bottom: 30%;
-      right: 30%;
-      animation-delay: 0.5s;
-    }
-
-    .background-pattern {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.1;
-      background-image: radial-gradient(circle at 25% 25%, #FFD700 2px, transparent 2px), radial-gradient(circle at 75% 75%, #FFD700 2px, transparent 2px);
-      background-size: 100px 100px;
-      animation: patternMove 20s linear infinite;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes glow {
-      from {
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        filter: brightness(1);
-      }
-      to {
-        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
-        filter: brightness(1.2);
-      }
-    }
-
-    @keyframes textShine {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-    }
-
-    @keyframes twinkle {
-      0%, 100% {
-        opacity: 0.3;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-    }
-
-    @keyframes patternMove {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(100px, 100px);
-      }
-    }
-
-    .logo-container:hover .search-circle {
-      transform: scale(1.1);
-      transition: transform 0.3s ease;
-    }
-
-    .tagline-link {
-      text-decoration: none;
-    }
-
-    .interactive-tagline {
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      padding: 0.5rem 1rem;
+    .btn {
+      padding: 10px 22px;
       border-radius: 25px;
+      font-weight: bold;
+      background: #FFD700;
+      color: #1a237e;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,215,0,0.5);
     }
 
-    .interactive-tagline:hover {
-      background: rgba(255, 215, 0, 0.1);
-      border-color: #FFD700;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    .btn:hover { transform: scale(1.05); box-shadow:0 0 25px rgba(255,215,0,0.8); }
+
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60vh;
+      max-height: 400px;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 2px solid rgba(255,215,0,0.4);
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 0 20px rgba(255,215,0,0.3);
     }
 
-    @media (max-width: 1200px) {
-      .main-text {
-        font-size: 3rem;
-      }
-      .icon {
-        width: 100px;
-        height: 100px;
-      }
-      .search-circle {
-        width: 70px;
-        height: 70px;
-      }
+    .right-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 1s ease, opacity 0.5s ease;
     }
 
-    @media (max-width: 768px) {
-      .logo-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-      }
-      .main-text {
-        font-size: 2.5rem;
-      }
-      .tagline {
-        margin-left: 0;
-      }
-    }
-
-    /* Footer from home.html */
+    /* Footer */
     footer {
       text-align: center;
       padding: 30px 20px;
-      background: rgba(94, 62, 203, 0.1);
-      width: 100%;
-      margin-top: auto;
+      background: rgba(26,35,126,0.8);
+      border-top: 1px solid rgba(255,215,0,0.3);
     }
 
     footer a {
       margin: 0 15px;
-      color: #5e3ecb;
+      color: #FFD700;
       text-decoration: none;
       font-size: 28px;
       transition: 0.3s;
     }
 
-    footer a:hover {
-      transform: scale(1.2);
-    }
+    footer a:hover { transform: scale(1.2); color:#fff; }
 
-    footer p {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #5e3ecb;
+    footer p { margin-top: 15px; font-size: 14px; color: #FFD700; }
+
+    /* Responsive */
+    @media(max-width:900px) {
+      main { flex-direction: column; padding: 120px 20px 20px 20px; }
+      .left-section, .right-section { flex: 1 1 100%; margin-bottom: 30px; }
+      .search-bar input { width: 180px; }
+      .left-section h1 { font-size: 45px; }
+      .left-section p { font-size: 18px; }
+      .right-section { height: 50vh; max-height: 300px; }
     }
   </style>
 </head>
 <body>
+
+  <div class="background-pattern"></div>
+  <div class="star">★</div>
+  <div class="star">★</div>
+  <div class="star">★</div>
+  <div class="star">★</div>
 
   <nav>
     <div class="logo">Talent Search</div>
@@ -349,30 +242,16 @@
     </div>
   </nav>
 
-  <div class="background-pattern"></div>
-  
-  <div class="decorative-elements">
-    <div class="star">★</div>
-    <div class="star">★</div>
-    <div class="star">★</div>
-    <div class="star">★</div>
-  </div>
-
-  <div class="logo-container">
-    <div class="icon">
-      <div class="search-circle"></div>
-      <div class="search-handle"></div>
+  <main>
+    <div class="left-section">
+      <h1>Talent Search</h1>
+      <p>✨ Discover, Connect & Shine! Explore talented artists and creative minds across every field. 🌟</p>
+      <a href="category.html" class="btn">Explore</a>
     </div>
-    
-    <div class="text-container">
-      <div class="main-text">
-        TALENT<br>SEARCH
-      </div>
-      <a href="category.html" class="tagline-link">
-        <div class="tagline interactive-tagline">Click to Explore</div>
-      </a>
+    <div class="right-section">
+      <img id="mainImage" src="images/animator.jpeg" alt="Talent Visual">
     </div>
-  </div>
+  </main>
 
   <footer>
     <a href="https://instagram.com" target="_blank">📸</a>
@@ -382,28 +261,33 @@
   </footer>
 
   <script>
-    // Add interactive hover effects from index.html
-    document.addEventListener('mousemove', (e) => {
-        const stars = document.querySelectorAll('.star');
-        const mouseX = e.clientX / window.innerWidth;
-        const mouseY = e.clientY / window.innerHeight;
-        
-        stars.forEach((star, index) => {
-            const speed = (index + 1) * 0.3;
-            const x = (mouseX - 0.5) * speed * 30;
-            const y = (mouseY - 0.5) * speed * 30;
-            star.style.transform = `translate(${x}px, ${y}px) scale(${1 + speed * 0.1})`;
-        });
-    });
+    const images = [
+      "images/animator.jpeg",
+      "images/img2.jpeg",
+      "images/img3.jpeg",
+      "images/img4.jpeg",
+      "images/img5.jpeg",
+      "images/img6.jpeg"
+    ];
 
-    // Logo click animation from index.html
-    document.querySelector('.logo-container').addEventListener('click', () => {
-        const container = document.querySelector('.logo-container');
-        container.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            container.style.transform = 'scale(1)';
-        }, 150);
-    });
+    let current = 0;
+    const mainImage = document.getElementById("mainImage");
+
+    function changeImage() {
+      mainImage.style.transform = 'scale(1)';
+      mainImage.style.opacity = 0;
+      setTimeout(() => {
+        current = (current + 1) % images.length;
+        mainImage.src = images[current];
+        mainImage.style.opacity = 1;
+        mainImage.style.transform = 'scale(1.1)';
+      }, 500);
+    }
+
+    mainImage.style.transform = 'scale(1.1)';
+    setInterval(changeImage, 5000);
   </script>
+
 </body>
 </html>
+
