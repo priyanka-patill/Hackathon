@@ -3,158 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us - Talent Search Artists</title>
+  <title>About Us - Talent Search</title>
   <style>
-    :root {
-      --primary-color: #1a237e;
-      --secondary-color: #ffeb3b;
-      --accent-color: #fbc02d;
-    }
-    /* Header */
-    .header {
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: var(--primary-color);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 40px;
-    }
-    .header .logo {
-      color: var(--secondary-color);
-      font-size: 28px;
-      margin: 0;
-      font-weight: 700;
-      text-decoration: none;
-      transform: translateX(-80px);
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
       font-family: 'Poppins', Arial, sans-serif;
-      margin: 0;
-      background: #f4f6fb;
-      color: #333;
+      background: #1a237e;
+      color: #FFD700;
       line-height: 1.6;
-      padding: 120px 20px 40px; /* top padding to avoid header */
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 120px 20px 40px;
+      max-width: 1000px;
+      margin: auto;
       overflow-x: hidden;
     }
 
+    /* Background Stars */
+    .background-pattern {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0.1;
+      background-image: 
+        radial-gradient(circle at 25% 25%, #FFD700 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, #FFD700 2px, transparent 2px);
+      background-size: 100px 100px;
+      animation: patternMove 20s linear infinite;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      color: #FFD700;
+      font-size: 1.2rem;
+      animation: twinkle 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .star:nth-child(1){top:15%;left:20%;animation-delay:0s;}
+    .star:nth-child(2){top:25%;right:15%;animation-delay:1s;}
+    .star:nth-child(3){bottom:20%;left:25%;animation-delay:2s;}
+    .star:nth-child(4){bottom:30%;right:30%;animation-delay:0.5s;}
+
+    @keyframes patternMove {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(100px,100px); }
+    }
+    @keyframes twinkle {
+      0%,100% { opacity:0.3; transform:scale(1); }
+      50% { opacity:1; transform:scale(1.2); }
+    }
+    @keyframes textShine {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top:0; left:0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(26,35,126,0.7);
+      border-bottom: 1px solid rgba(255,215,0,0.3);
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #FFD700, #FFA000, #FFD700);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 4s ease-in-out infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 18px;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      background: rgba(255,215,0,0.2);
+      color: #fff;
+    }
+
+    /* Headings */
     h1 {
       text-align: center;
-      color: var(--primary-color);
       margin-bottom: 12px;
       font-size: 36px;
       font-weight: 700;
-      position: relative;
+      background: linear-gradient(45deg, #FFD700, #FFA000, #FFD700);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 4s ease-in-out infinite;
     }
 
-    h1 span.highlight {
-      color: var(--accent-color);
-      animation: highlightPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes highlightPulse {
-      0%, 100% { color: var(--accent-color); }
-      50% { color: #fff176; }
-    }
-
-    h2#diffTitle {
-      color: #374785;
+    h2 {
       margin-top: 36px;
       font-weight: 600;
+      color: #FFD700;
       cursor: pointer;
-      user-select: none;
-      position: relative;
-      padding-right: 25px;
-    }
-    h2#diffTitle::after {
-      content: '+';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 22px;
-      color: var(--accent-color);
-      transition: transform 0.3s ease;
-    }
-    h2#diffTitle.active::after {
-      content: '-';
-      transform: translateY(-50%) rotate(180deg);
     }
 
-    h2:not(#diffTitle) {
-      color: #374785;
-      margin-top: 36px;
-      font-weight: 600;
-      user-select: none;
-    }
-
+    /* Text */
     p, ul {
-      max-width: 720px;
       margin-bottom: 18px;
       font-size: 18px;
-      color: #4a4a4a;
+      color: #e0d7ff;
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.6s ease, transform 0.6s ease;
-      will-change: opacity, transform;
     }
-    p.visible, ul.visible {
-      opacity: 1;
-      transform: none;
-    }
+    p.visible, ul.visible { opacity: 1; transform: none; }
 
     .intro {
       font-size: 20px;
       font-weight: 500;
       text-align: center;
-      max-width: 640px;
-      margin: 0 auto 40px auto;
+      margin: 0 auto 40px;
     }
 
     ul {
-      max-width: 680px;
-      margin-left: 20px;
       list-style-type: disc;
       padding-left: 22px;
-      cursor: default;
-      display: none; /* hidden initially */
+      display: none;
     }
-    ul.visible {
-      display: block;
-    }
+    ul.visible { display: block; }
 
-    /* Thank You Section */
-    .thank-you-container {
-      margin-top: 50px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 700;
-      color: #1a237e;
-      line-height: 1.4;
-    }
-
-    .thank-you-container .highlight-text {
-      background: linear-gradient(90deg, #fbc02d, #ffeb3b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: pulseGradient 3s ease-in-out infinite;
-    }
-
-    @keyframes pulseGradient {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
+    /* Team */
     .team-photos {
-      margin-top: 20px;
+      margin-top: 30px;
       display: flex;
       justify-content: center;
       gap: 24px;
@@ -166,13 +158,14 @@
       cursor: pointer;
       position: relative;
       border-radius: 16px;
-      padding: 8px;
-      background: white;
-      box-shadow: 0 4px 10px rgba(26, 35, 126, 0.15);
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,215,0,0.3);
+      box-shadow: 0 0 15px rgba(255,215,0,0.2);
       transition: box-shadow 0.25s ease;
     }
     .team-member:hover {
-      box-shadow: 0 6px 25px rgba(251, 192, 45, 0.6);
+      box-shadow: 0 0 25px rgba(255,215,0,0.6);
     }
     .team-member img {
       width: 100%;
@@ -184,48 +177,85 @@
     .team-member h3 {
       margin: 6px 0 3px 0;
       font-size: 19px;
-      color: #222;
-      font-weight: 700;
+      color: #FFD700;
     }
     .team-member p {
       font-size: 14px;
-      color: #666;
+      color: #e0d7ff;
       margin: 0 0 10px 0;
     }
     .fun-fact {
       font-style: italic;
       font-size: 14px;
       color: #fff;
-      min-height: 38px;
-      transition: opacity 0.3s ease;
       opacity: 0;
     }
-    .show-fact {
-      opacity: 1;
+    .show-fact { opacity: 1; }
+
+    /* Thank You Section */
+    .thank-you-container {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #FFD700;
     }
+    .thank-you-container .highlight-text {
+      background: linear-gradient(90deg, #fbc02d, #ffeb3b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 4s ease-in-out infinite;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(26,35,126,0.8);
+      border-top: 1px solid rgba(255,215,0,0.3);
+      margin-top: 50px;
+    }
+    footer a {
+      margin: 0 15px;
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 28px;
+      transition: 0.3s;
+    }
+    footer a:hover { transform: scale(1.2); color:#fff; }
+    footer p { margin-top: 15px; font-size: 14px; color: #FFD700; }
   </style>
 </head>
 <body>
 
-  <header class="header">
-    <a href="#" class="logo"> 🎯 TALENT SEARCH</a>
-  </header>
+  <div class="background-pattern"></div>
+  <div class="star">★</div>
+  <div class="star">★</div>
+  <div class="star">★</div>
+  <div class="star">★</div>
 
-  <h1>
-    About <span class="highlight">Talent Search</span>
-  </h1>
+  <nav>
+    <div class="logo">Talent Search</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="category.html">Categories</a>
+      <a href="about.html">About Us</a>
+    </div>
+  </nav>
 
-  <p class="intro visible" tabindex="0">
+  <h1>About Talent Search</h1>
+
+  <p class="intro visible">
     Talent Search is a vibrant platform dedicated to empowering artists to showcase their talents, connect with eager clients, and realize their creative potential. We simplify commission requests and foster meaningful collaboration.
   </p>
 
   <h2 id="missionTitle">Our Mission</h2>
-  <p id="missionText" tabindex="0" class="visible">
+  <p id="missionText" class="visible">
     We are passionate about bridging the gap between artists and their audiences, providing an intuitive and artist-centric space that nurtures creativity and professional growth.
   </p>
 
-  <h2 id="diffTitle" tabindex="0" aria-expanded="false" aria-controls="diffContent">What Makes Us Different</h2>
-  <ul id="diffContent" role="region" aria-hidden="true">
+  <h2 id="diffTitle">What Makes Us Different</h2>
+  <ul id="diffContent">
     <li><strong>Direct Enquiry & Commission System:</strong> We connect clients directly with artists to streamline commission requests and build authentic professional relationships.</li>
     <li><strong>Artist-Centric Approach:</strong> Prioritizing artists' creative freedom, intellectual property, and career goals.</li>
     <li><strong>Thriving Community:</strong> A supportive space for collaboration, inspiration, and growth among artists worldwide.</li>
@@ -233,37 +263,44 @@
   </ul>
 
   <h2>Meet Our Team</h2>
-  <div class="team-photos" aria-label="Our Team">
-    <div class="team-member" tabindex="0" aria-describedby="fact1" role="button" aria-pressed="false">
-      <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Juhi Bijani - Co-founder & Community Lead" />
+  <div class="team-photos">
+    <div class="team-member" id="m1">
+      <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Juhi Bijani" />
       <h3>Juhi Bijani</h3>
       <p>Co-founder & Community Lead</p>
-      <div id="fact1" class="fun-fact" aria-live="polite"></div>
+      <div class="fun-fact"></div>
     </div>
-    <div class="team-member" tabindex="0" aria-describedby="fact2" role="button" aria-pressed="false">
-      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Aditi Bahalkar - Platform Developer" />
+    <div class="team-member" id="m2">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Aditi Bahalkar" />
       <h3>Aditi Bahalkar</h3>
       <p>Platform Developer</p>
-      <div id="fact2" class="fun-fact" aria-live="polite"></div>
+      <div class="fun-fact"></div>
     </div>
-    <div class="team-member" tabindex="0" aria-describedby="fact3" role="button" aria-pressed="false">
-      <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Arpita Ahuja - Artist Relations Manager" />
+    <div class="team-member" id="m3">
+      <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Arpita Ahuja" />
       <h3>Arpita Ahuja</h3>
       <p>Artist Relations Manager</p>
-      <div id="fact3" class="fun-fact" aria-live="polite"></div>
+      <div class="fun-fact"></div>
     </div>
-    <div class="team-member" tabindex="0" aria-describedby="fact4" role="button" aria-pressed="false">
-      <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Priyanka Patil - Marketing & Outreach Specialist" />
+    <div class="team-member" id="m4">
+      <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Priyanka Patil" />
       <h3>Priyanka Patil</h3>
       <p>Marketing & Outreach Specialist</p>
-      <div id="fact4" class="fun-fact" aria-live="polite"></div>
+      <div class="fun-fact"></div>
     </div>
   </div>
 
-  <div class="thank-you-container" role="region" aria-live="polite" tabindex="0" aria-label="Thank you message">
+  <div class="thank-you-container">
      Thank you for joining us! <br>
     We're thrilled to have you as part of the <span class="highlight-text">Talent Search</span> community.
   </div>
+
+  <footer>
+    <a href="https://instagram.com" target="_blank">📸</a>
+    <a href="https://github.com" target="_blank">🐙</a>
+    <a href="mailto:info@talentsearch.com">✉️</a>
+    <p>© 2024 Talent Search. All rights reserved.</p>
+  </footer>
 
   <script>
     // Animate fade-in on scroll
@@ -279,62 +316,32 @@
     window.addEventListener('scroll', onScrollFadeIn);
     onScrollFadeIn();
 
-    // Toggle "What Makes Us Different" content
+    // Toggle "What Makes Us Different"
     const diffTitle = document.getElementById('diffTitle');
     const diffContent = document.getElementById('diffContent');
-    diffTitle.setAttribute('aria-expanded', 'false');
-    diffContent.setAttribute('aria-hidden', 'true');
+    diffContent.style.display = "none";
 
-    diffTitle.addEventListener('click', toggleDiffSection);
-    diffTitle.addEventListener('keydown', function(e) {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleDiffSection();
-      }
+    diffTitle.addEventListener('click', () => {
+      const visible = diffContent.style.display === "block";
+      diffContent.style.display = visible ? "none" : "block";
     });
 
-    function toggleDiffSection() {
-      const isVisible = diffContent.style.display === 'block';
-      diffContent.style.display = isVisible ? 'none' : 'block';
-      diffTitle.classList.toggle('active', !isVisible);
-      diffTitle.setAttribute('aria-expanded', !isVisible);
-      diffContent.setAttribute('aria-hidden', isVisible);
-    }
-
-    // Team member fun facts
-    const funFacts = {
-      fact1: "Loves hosting monthly art challenges to inspire creativity.",
-      fact2: "Passionate about coding and mentoring young developers.",
-      fact3: "Connects closely with artists to understand their needs deeply.",
-      fact4: "Led major successful marketing campaigns in arts and culture."
+    // Team fun facts
+    const facts = {
+      m1: "Loves hosting monthly art challenges to inspire creativity.",
+      m2: "Passionate about coding and mentoring young developers.",
+      m3: "Connects closely with artists to understand their needs deeply.",
+      m4: "Led major successful marketing campaigns in arts and culture."
     };
-
-    document.querySelectorAll('.team-member').forEach(member => {
-      member.addEventListener('click', () => toggleFact(member));
-      member.addEventListener('keydown', e => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleFact(member);
-        }
+    document.querySelectorAll('.team-member').forEach(m => {
+      m.addEventListener('click', () => {
+        const factEl = m.querySelector('.fun-fact');
+        const shown = factEl.classList.contains('show-fact');
+        document.querySelectorAll('.fun-fact').forEach(f => { f.classList.remove('show-fact'); f.textContent=""; });
+        if(!shown) { factEl.textContent = facts[m.id]; factEl.classList.add('show-fact'); }
       });
     });
-
-    function toggleFact(member) {
-      const factEl = member.querySelector('.fun-fact');
-      const isShown = factEl.classList.contains('show-fact');
-
-      document.querySelectorAll('.fun-fact').forEach(f => {
-        f.classList.remove('show-fact');
-        f.textContent = '';
-      });
-
-      if(!isShown) {
-        const factId = factEl.id;
-        factEl.textContent = funFacts[factId] || '';
-        factEl.classList.add('show-fact');
-        factEl.focus();
-      }
-    }
   </script>
 </body>
 </html>
+
