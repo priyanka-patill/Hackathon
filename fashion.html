@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Fashion Designers</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #1c1c2b; color: #fff; }
+    .navbar { display: flex; background: rgba(28,28,43,0.9); padding: 12px 30px; }
+    .navbar .nav-links { display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; }
+    .navbar .nav-links li a { text-decoration: none; color: #fff; font-weight: bold; padding: 8px 15px; border: 2px solid #ffcc00; border-radius: 20px; transition: all 0.3s ease; }
+    .navbar .nav-links li a:hover { background: #ffcc00; color: #1c1c2b; }
+    h1 { text-align: center; margin-top: 20px; color: #ffcc00; }
+    .fashion-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px; justify-items: center; }
+    @media (max-width: 768px) { .fashion-container { grid-template-columns: 1fr; } }
+    .fashion-card { background: rgba(30,30,48,0.9); border-radius: 12px; overflow: hidden; width: 100%; max-width: 300px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.3s ease; padding: 20px; }
+    .fashion-card:hover { transform: translateY(-10px); }
+    .fashion-card h3 { color: #ffcc00; margin: 10px 0 15px 0; }
+    .fashion-card p { color: #fff; font-size: 14px; }
+    .fashion-image img { display: block; margin: 0 auto 15px auto; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <ul class="nav-links"><li><a href="index.html">Back</a></li></ul>
+  </div>
+
+  <h1> Fashion Designers</h1>
+  
+  <div class="fashion-container">
+    <div class="fashion-card">
+      <div class="fashion-image"><img src="images/coco_chanel.jpg" alt="Coco Chanel"></div>
+      <h3>Coco Chanel</h3>
+      <p>Iconic French designer who revolutionized women's fashion with elegance and simplicity.</p>
+    </div>
+
+    <div class="fashion-card">
+      <div class="fashion-image"><img src="images/karl_lagerfeld.jpg" alt="Karl Lagerfeld"></div>
+      <h3>Karl Lagerfeld</h3>
+      <p>Legendary designer known for his work with Chanel, Fendi, and his unique personal style.</p>
+    </div>
+
+    <div class="fashion-card">
+      <div class="fashion-image"><img src="images/ralph_lauren.jpg" alt="Ralph Lauren"></div>
+      <h3>Ralph Lauren</h3>
+      <p>American fashion designer renowned for Polo Ralph Lauren and classic American style clothing.</p>
+    </div>
+
+    <div class="fashion-card">
+      <div class="fashion-image"><img src="images/valentino.jpg" alt="Valentino Garavani"></div>
+      <h3>Valentino Garavani</h3>
+      <p>Italian designer famous for haute couture, glamorous red carpet gowns, and luxury fashion.</p>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Dancers</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #1c1c2b; color: #fff; }
+    .navbar { display: flex; background: rgba(28,28,43,0.9); padding: 12px 30px; }
+    .navbar .nav-links { display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; }
+    .navbar .nav-links li a { text-decoration: none; color: #fff; font-weight: bold; padding: 8px 15px; border: 2px solid #ffcc00; border-radius: 20px; transition: all 0.3s ease; }
+    .navbar .nav-links li a:hover { background: #ffcc00; color: #1c1c2b; }
+    h1 { text-align: center; margin-top: 20px; color: #ffcc00; }
+    .dancer-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px; justify-items: center; }
+    @media (max-width: 768px) { .dancer-container { grid-template-columns: 1fr; } }
+    .dancer-card { background: rgba(30,30,48,0.9); border-radius: 12px; overflow: hidden; width: 100%; max-width: 300px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.3s ease; padding: 20px; }
+    .dancer-card:hover { transform: translateY(-10px); }
+    .dancer-card h3 { color: #ffcc00; margin: 10px 0 15px 0; }
+    .dancer-card p { color: #fff; font-size: 14px; }
+    .dancer-image img { display: block; margin: 0 auto 15px auto; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <ul class="nav-links"><li><a href="index.html">Back</a></li></ul>
+  </div>
+
+  <h1>Dancers</h1>
+  
+  <div class="dancer-container">
+    <div class="dancer-card">
+      <div class="dancer-image"><img src="images/michael_jackson.jpg" alt="Michael Jackson"></div>
+      <h3>Michael Jackson</h3>
+      <p>The King of Pop, famous for his signature moonwalk and iconic dance moves.</p>
+    </div>
+
+    <div class="dancer-card">
+      <div class="dancer-image"><img src="images/martha_graham.jpg" alt="Martha Graham"></div>
+      <h3>Martha Graham</h3>
+      <p>Modern dance pioneer known for her expressive movement techniques and choreography.</p>
+    </div>
+
+    <div class="dancer-card">
+      <div class="dancer-image"><img src="images/fred_astaire.jpg" alt="Fred Astaire"></div>
+      <h3>Fred Astaire</h3>
+      <p>Legendary film and stage dancer, renowned for elegant ballroom and tap routines.</p>
+    </div>
+
+    <div class="dancer-card">
+      <div class="dancer-image"><img src="images/misty_copeland.jpg" alt="Misty Copeland"></div>
+      <h3>Misty Copeland</h3>
+      <p>First African American principal dancer with American Ballet Theatre, celebrated for grace and technique.</p>
+    </div>
+  </div>
+
+</body>
+</html>

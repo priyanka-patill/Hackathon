@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Sports Figures</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #1c1c2b; color: #fff; }
+    .navbar { display: flex; background: rgba(28,28,43,0.9); padding: 12px 30px; }
+    .navbar .nav-links { display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; }
+    .navbar .nav-links li a { text-decoration: none; color: #fff; font-weight: bold; padding: 8px 15px; border: 2px solid #ffcc00; border-radius: 20px; transition: all 0.3s ease; }
+    .navbar .nav-links li a:hover { background: #ffcc00; color: #1c1c2b; }
+    h1 { text-align: center; margin-top: 20px; color: #ffcc00; }
+    .sports-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px; justify-items: center; }
+    @media (max-width: 768px) { .sports-container { grid-template-columns: 1fr; } }
+    .sports-card { background: rgba(30,30,48,0.9); border-radius: 12px; overflow: hidden; width: 100%; max-width: 300px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.3s ease; padding: 20px; }
+    .sports-card:hover { transform: translateY(-10px); }
+    .sports-card h3 { color: #ffcc00; margin: 10px 0 15px 0; }
+    .sports-card p { color: #fff; font-size: 14px; }
+    .sports-image img { display: block; margin: 0 auto 15px auto; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <ul class="nav-links"><li><a href="index.html">Back</a></li></ul>
+  </div>
+
+  <h1> Sports Figures</h1>
+  
+  <div class="sports-container">
+    <div class="sports-card">
+      <div class="sports-image"><img src="images/serena_williams.jpg" alt="Serena Williams"></div>
+      <h3>Serena Williams</h3>
+      <p>Legendary tennis player with multiple Grand Slam titles and a dominant career in women's tennis.</p>
+    </div>
+
+    <div class="sports-card">
+      <div class="sports-image"><img src="images/cristiano_ronaldo.jpg" alt="Cristiano Ronaldo"></div>
+      <h3>Cristiano Ronaldo</h3>
+      <p>One of the greatest footballers of all time, known for scoring records and international accolades.</p>
+    </div>
+
+    <div class="sports-card">
+      <div class="sports-image"><img src="images/michael_jordan.jpg" alt="Michael Jordan"></div>
+      <h3>Michael Jordan</h3>
+      <p>Basketball legend, six-time NBA champion, and widely considered the greatest basketball player ever.</p>
+    </div>
+
+    <div class="sports-card">
+      <div class="sports-image"><img src="images/roger_federer.jpg" alt="Roger Federer"></div>
+      <h3>Roger Federer</h3>
+      <p>Swiss tennis champion known for grace on court, record Grand Slam titles, and sportsmanship.</p>
+    </div>
+  </div>
+
+</body>
+</html>

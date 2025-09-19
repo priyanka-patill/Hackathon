@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Animators</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #1c1c2b; color: #fff; }
+    .navbar { display: flex; background: rgba(28,28,43,0.9); padding: 12px 30px; }
+    .navbar .nav-links { display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; }
+    .navbar .nav-links li a { text-decoration: none; color: #fff; font-weight: bold; padding: 8px 15px; border: 2px solid #ffcc00; border-radius: 20px; transition: all 0.3s ease; }
+    .navbar .nav-links li a:hover { background: #ffcc00; color: #1c1c2b; }
+    h1 { text-align: center; margin-top: 20px; color: #ffcc00; }
+    .animator-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px; justify-items: center; }
+    @media (max-width: 768px) { .animator-container { grid-template-columns: 1fr; } }
+    .animator-card { background: rgba(30,30,48,0.9); border-radius: 12px; overflow: hidden; width: 100%; max-width: 300px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.3s ease; padding: 20px; }
+    .animator-card:hover { transform: translateY(-10px); }
+    .animator-card h3 { color: #ffcc00; margin: 10px 0 15px 0; }
+    .animator-card p { color: #fff; font-size: 14px; }
+    .animator-image img { display: block; margin: 0 auto 15px auto; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <ul class="nav-links"><li><a href="index.html">Back</a></li></ul>
+  </div>
+
+  <h1>Animators</h1>
+  
+  <div class="animator-container">
+    <div class="animator-card">
+      <div class="animator-image"><img src="images/walt_disney.jpg" alt="Walt Disney"></div>
+      <h3>Walt Disney</h3>
+      <p>Legendary animator, founder of Disney Studios, and pioneer of feature-length animated films.</p>
+    </div>
+
+    <div class="animator-card">
+      <div class="animator-image"><img src="images/hayao_miyazaki.jpg" alt="Hayao Miyazaki"></div>
+      <h3>Hayao Miyazaki</h3>
+      <p>Japanese animator and co-founder of Studio Ghibli, known for masterpieces like Spirited Away.</p>
+    </div>
+
+    <div class="animator-card">
+      <div class="animator-image"><img src="images/john_lasseter.jpg" alt="John Lasseter"></div>
+      <h3>John Lasseter</h3>
+      <p>American animator, co-founder of Pixar, and creative director behind Toy Story and Cars franchises.</p>
+    </div>
+
+    <div class="animator-card">
+      <div class="animator-image"><img src="images/chuck_jones.jpg" alt="Chuck Jones"></div>
+      <h3>Chuck Jones</h3>
+      <p>Animator and director famous for Looney Tunes and Merrie Melodies, including Bugs Bunny and Daffy Duck.</p>
+    </div>
+  </div>
+
+</body>
+</html>
