@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Search</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #d9c8f5; /* Light purple theme */
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 0 0 15px 15px;
+      position: sticky;
+      top:0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #5e3ecb;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 30px;
+      padding: 5px 12px;
+      border: 2px solid #5e3ecb;
+    }
+
+    .search-bar input {
+      border: none;
+      background: none;
+      color: #333;
+      font-size: 16px;
+      width: 400px;
+    }
+
+    .search-bar span { margin-right: 8px; font-size: 20px; }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #5e3ecb;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 18px;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #5e3ecb;
+      color: #fff;
+    }
+
+    /* Main Section */
+    main {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 100px 50px 50px 50px;
+    }
+
+    .left-section {
+      flex: 1;
+      padding-right: 40px;
+    }
+
+    .left-section h1 {
+      font-size: 60px;
+      color: #5e3ecb;
+      margin-bottom: 20px;
+    }
+
+    .left-section p {
+      font-size: 20px;
+      font-style: italic;
+      font-weight: bold;
+      margin-bottom: 25px;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-weight: bold;
+      background: #5e3ecb;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover { transform: scale(1.05); }
+
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60vh; /* reduced height */
+      max-height: 400px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #e2d9f7;
+    }
+
+    .right-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 1s ease, opacity 0.5s ease;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(94,62,203,0.1);
+    }
+
+    footer a {
+      margin: 0 15px;
+      color: #5e3ecb;
+      text-decoration: none;
+      font-size: 28px;
+      transition: 0.3s;
+    }
+
+    footer a:hover { transform: scale(1.2); }
+
+    footer p { margin-top: 15px; font-size: 14px; color: #5e3ecb; }
+
+    /* Responsive */
+    @media(max-width:900px) {
+      main { flex-direction: column; padding: 120px 20px 20px 20px; }
+      .left-section, .right-section { flex: 1 1 100%; margin-bottom: 30px; }
+      .search-bar input { width: 200px; }
+      .left-section h1 { font-size: 45px; }
+      .left-section p { font-size: 18px; }
+      .right-section { height: 50vh; max-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Talent Search</div>
+    <div class="search-bar">
+      <span>🔍</span>
+      <input type="text" placeholder="Search artists, skills...">
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="category.html">Categories</a>
+      <a href="#">About Us</a>
+    </div>
+  </nav>
+
+  <!-- Main Section -->
+  <main>
+    <div class="left-section">
+      <h1>Talent Search</h1>
+      <p>✨ Discover, Connect & Shine! Explore talented artists and creative minds across every field. 🌟</p>
+      <a href="category.html" class="btn">Explore</a>
+    </div>
+    <div class="right-section">
+      <img id="mainImage" src="images/animator.jpeg" alt="Talent Visual">
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="https://instagram.com" target="_blank">📸</a>
+    <a href="https://github.com" target="_blank">🐙</a>
+    <a href="mailto:info@talentsearch.com">✉️</a>
+    <p>© 2024 Talent Search. All rights reserved.</p>
+  </footer>
+
+  <!-- JS: rotate images with zoom effect -->
+  <script>
+    const images = [
+      "images/animator.jpeg",
+      "images/img2.jpeg",
+      "images/img3.jpeg",
+      "images/img4.jpeg",
+      "images/img5.jpeg",
+      "images/img6.jpeg"
+    ];
+
+    let current = 0;
+    const mainImage = document.getElementById("mainImage");
+
+    function changeImage() {
+      // Reset zoom
+      mainImage.style.transform = 'scale(1)';
+      mainImage.style.opacity = 0;
+      setTimeout(() => {
+        current = (current + 1) % images.length;
+        mainImage.src = images[current];
+        mainImage.style.opacity = 1;
+        // Apply zoom effect
+        mainImage.style.transform = 'scale(1.1)';
+      }, 500);
+    }
+
+    // Initial zoom
+    mainImage.style.transform = 'scale(1.1)';
+
+    setInterval(changeImage, 5000);
+  </script>
+
+</body>
+</html>
