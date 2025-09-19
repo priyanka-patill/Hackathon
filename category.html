@@ -3,195 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art Categories</title>
+  <title>Categories - Talent Search</title>
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #fff;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: background-image 1s ease-in-out; /* smooth fade effect */
+      background: #f9f6ff; 
+      color: #333;
+      min-height: 100vh;
     }
 
-    /* Navbar */
-    .navbar {
+    /* Navbar copied from home */
+    nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      background: rgba(28, 28, 43, 0.9); /* semi-transparent */
-      padding: 12px 30px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      gap: 20px;
-      position: relative;
-      z-index: 1;
+      padding: 15px 40px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 0 0 15px 15px;
+      position: sticky;
+      top:0;
+      z-index: 100;
     }
 
-    .logo img {
-      height: 40px;
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #5e3ecb;
     }
 
     .search-bar {
-      flex: 1;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      background: #fff;
+      border-radius: 30px;
+      padding: 5px 12px;
+      border: 2px solid #5e3ecb;
     }
 
     .search-bar input {
-      width: 60%;
-      max-width: 300px;
-      padding: 8px 15px;
       border: none;
-      border-radius: 20px;
-      outline: none;
-      font-size: 14px;
+      background: none;
+      color: #333;
+      font-size: 16px;
+      width: 400px;
     }
+
+    .search-bar span { margin-right: 8px; font-size: 20px; }
 
     .nav-links {
       display: flex;
-      gap: 15px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      padding: 8px 15px;
-      border: 2px solid #ffcc00;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-links li a:hover {
-      background: #ffcc00;
-      color: #1c1c2b;
-    }
-
-    /* Card container */
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
       gap: 20px;
-      padding: 40px;
-      justify-items: center;
-      position: relative;
-      z-index: 1;
     }
 
-    @media (max-width: 1024px) {
-      .container {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .nav-links a {
+      color: #5e3ecb;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 18px;
+      border-radius: 25px;
+      transition: 0.3s;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
+    .nav-links a:hover {
+      background: #5e3ecb;
+      color: #fff;
     }
 
-    /* Card design */
+    /* Category Section */
+    .category-section {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .category-section h1 {
+      font-size: 40px;
+      margin-bottom: 40px;
+      color: #5e3ecb;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
     .card {
-      background: rgba(30,30,48,0.9); /* semi-transparent */
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      width: 100%;
-      max-width: 300px;
+      background: #fff;
+      width: 280px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      transform: scale(1.05);
     }
 
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
     }
 
     .card h3 {
-      text-align: center;
-      padding: 15px;
-      background: rgba(44,44,64,0.9);
-      margin: 0;
-      font-size: 18px;
-      color: #ffcc00;
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #5e3ecb;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      <img src="logo.jpeg" alt="Logo">
-    </div>
-
+  <nav>
+    <div class="logo">Talent Search</div>
     <div class="search-bar">
-      <input type="text" placeholder="Search...">
+      <span>🔍</span>
+      <input type="text" placeholder="Search artists, skills...">
     </div>
-
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Categories</a></li>
-      <li><a href="#">About Us</a></li>
-    </ul>
-  </div>
-
-  <!-- Cards -->
-  <div class="container">
-    <div class="card">
-      <img src="magician.jpeg" alt="Magicians">
-      <h3>Magicians</h3>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="category.html">Categories</a>
+      <a href="#">About Us</a>
     </div>
+  </nav>
 
-    <div class="card">
-      <img src="singing.jpeg" alt="Singers">
-      <h3>Singers</h3>
+  <!-- Category Section -->
+  <section class="category-section">
+    <h1>Explore Categories</h1>
+    <div class="cards" id="categoryContainer">
+      <!-- JS will insert cards here -->
     </div>
+  </section>
 
-    <div class="card">
-      <img src="dancer.jpeg" alt="Dancers">
-      <h3>Dancers</h3>
-    </div>
-
-    <div class="card">
-      <img src="animator.jpeg" alt="Animators">
-      <h3>Animators</h3>
-    </div>
-
-    <div class="card">
-      <img src="sports.jpeg" alt="Sports">
-      <h3>Sports</h3>
-    </div>
-
-    <div class="card">
-      <img src="fashion.jpeg" alt="Fashion Designers">
-      <h3>Fashion Designers</h3>
-    </div>
-  </div>
-
-  <!-- Script for 5-second background change -->
+  <!-- JavaScript to generate categories -->
   <script>
-    const images = ["bg1.jpeg", "bg2.jpeg", "bg3.jpeg"];
-    let index = 0;
+    const categories = [
+      { title: "Magicians", img: "images/magician.jpeg", desc: "Masters of illusion and wonder." },
+      { title: "Singers", img: "images/singing.jpeg", desc: "Talented voices across all genres." },
+      { title: "Dancers", img: "images/dancer.jpeg", desc: "Graceful moves and powerful expressions." },
+      { title: "Animators", img: "images/animator.jpeg", desc: "Creative storytellers with visuals." },
+      { title: "Sports", img: "images/sports.jpeg", desc: "Athletes showcasing strength and skills." },
+      { title: "Fashion Designers", img: "images/fashion.jpeg", desc: "Designing style, trends, and elegance." }
+    ];
 
-    function changeBackground() {
-      document.body.style.backgroundImage = `url(${images[index]})`;
-      index = (index + 1) % images.length;
-    }
+    const container = document.getElementById("categoryContainer");
 
-    setInterval(changeBackground, 5000); // change every 5 seconds
-    window.onload = changeBackground; // set initial background
+    categories.forEach(cat => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${cat.img}" alt="${cat.title}">
+        <h3>${cat.title}</h3>
+        <p>${cat.desc}</p>
+      `;
+      container.appendChild(card);
+    });
   </script>
 
 </body>
